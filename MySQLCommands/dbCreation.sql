@@ -1,0 +1,37 @@
+CREATE TABLE IF NOT EXISTS users(
+	user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS books(
+	book_id INT NOT NULL auto_increment PRIMARY KEY,
+    title VARCHAR(50) NOT NULL
+);
+-- M2M
+CREATE TABLE IF NOT EXISTS user_books(
+	user_id INT NOT NULL,
+    book_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+	FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+    PRIMARY KEY (user_id, book_id)
+	);
+	
+-- ONE2MANY to books & users
+CREATE TABLE IF NOT EXISTS reviews(
+	review_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    book_id INT NOT NULL,
+    user_id INT NOT NULL,
+    title VARCHAR(50) NOT NULL,
+	review_text TEXT NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE RESTRICT ON UPDATE CASCADE,    
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE
+
+);
+-- ONE2MANY to users
+CREATE TABLE IF NOT EXISTS user_action_log(
+	action_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    action_string VARCHAR(30) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
