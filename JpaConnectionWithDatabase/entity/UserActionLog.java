@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -23,8 +23,7 @@ public class UserActionLog implements Serializable {
 	private String actionString;
 
 	@ManyToOne
-	@JoinColumn(name="user_id")
-	private int userId;
+	private User user;
 
 	public UserActionLog() {
 	}
@@ -45,12 +44,5 @@ public class UserActionLog implements Serializable {
 		this.actionString = actionString;
 	}
 
-	public int getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 }

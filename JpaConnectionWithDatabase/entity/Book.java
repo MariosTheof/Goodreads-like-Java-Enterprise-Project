@@ -1,6 +1,9 @@
-package model;
+package entity;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -21,9 +24,13 @@ public class Book implements Serializable {
 
 	private String title;
 
-	public Book() {
-	}
-
+	@ManyToMany(targetEntity=User.class)
+	private List<User> userList;
+	
+	
+	@OneToMany(targetEntity = Review.class)
+	private List<Review> userReviews; 
+	
 	public int getBookId() {
 		return this.bookId;
 	}
