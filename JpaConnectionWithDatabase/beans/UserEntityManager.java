@@ -3,12 +3,10 @@ package beans;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import entity.User;
-
 
 /**
  * Session Bean implementation class UserEntityManager
@@ -37,10 +35,18 @@ public class UserEntityManager {
 		}
 	}
 
-	/* Maybe this one will be deleted. */
-	private boolean isEmailValid(String email) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean userLogin(String username, String password) {			
+	    TypedQuery<String> query = entityManager.createQuery("SELECT u.password FROM User u WHERE u.username = :username ", String.class);
+		query.setParameter("username", username);
+		
+		boolean password_verified = BCrypt.checkpw(password, query.getSingleResult());	
+	    if(password_verified) { 
+	    	// System.out.println("User logged in from JPA");
+	    	return true;
+	    }
+	    // System.out.println("Wrong login from JPA");
+	    return false;
+
 	}
 
 }

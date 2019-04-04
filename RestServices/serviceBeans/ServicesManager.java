@@ -6,6 +6,9 @@ import javax.ejb.Stateless;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+
 import entity.User;
 
 
@@ -18,7 +21,7 @@ public class ServicesManager {
 
 	
 	public UserDTO encryptUserInfo(UserDTO user) {
-		String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+		String hashed = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
 		user.setPassword(hashed);
 		return user;
 	}
@@ -34,5 +37,18 @@ public class ServicesManager {
 	}
 	
 	
+	public String generateJwt() {
+		try {
+			Algorithm algorithm = Algorithm.HMAC256("secret");
+			String token = JWT.create()
+					 	.withIssuer("auth0")
+				        .sign(algorithm);
+			 System.out.println(token);
+			return token;
+		} catch (IllegalArgumentException  e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }

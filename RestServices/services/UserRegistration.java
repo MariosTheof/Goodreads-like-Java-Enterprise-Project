@@ -25,7 +25,7 @@ import serviceBeans.UserDTO;
 public class UserRegistration extends Application{
 
 	@EJB 
-	ServicesManager serviceManager;
+	ServicesManager servicesManager;
 	
 	@EJB
 	UserEntityManager userEntityManager;
@@ -35,9 +35,9 @@ public class UserRegistration extends Application{
 	@Produces(MediaType.APPLICATION_JSON)
 	public UserDTO receiveUserRegistrationInfo(UserDTO user) {
 		
-		UserDTO encryptedUserInfo = serviceManager.encryptUserInfo(user);
+		UserDTO encryptedUserInfo = servicesManager.encryptUserInfo(user);
 		
-		User newUserEntity = serviceManager.convertToEntity(encryptedUserInfo);
+		User newUserEntity = servicesManager.convertToEntity(encryptedUserInfo);
 		
 		userEntityManager.addUserToDatabase(newUserEntity);
 		
