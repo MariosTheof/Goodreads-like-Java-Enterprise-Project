@@ -2,10 +2,6 @@ package entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
 
 /**
@@ -30,12 +26,12 @@ public class User implements Serializable {
 	private String password;
 	private String username;
 	
-	@ManyToMany(targetEntity=Book.class)
-	private List<Book> bookList;
+	// @ManyToMany(targetEntity=Book.class)
+	// private List<Book> bookList;
 	
 	
-	@OneToMany(targetEntity = Review.class)
-	private List<Review> userReviews; 
+	// @OneToMany(targetEntity = Review.class)
+	// private List<Review> userReviews; 
 	
 	public String getEmail() {
 		return this.email;

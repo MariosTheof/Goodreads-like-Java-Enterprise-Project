@@ -18,7 +18,14 @@ public class Review implements Serializable {
 	private String reviewText;
 	@Column(name="title")
 	private String title;
-
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="book_id")
+	private Book book;
+				@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_id")
+	private User user;
+	
 	public int getReviewId() {
 		return this.reviewId;
 	}

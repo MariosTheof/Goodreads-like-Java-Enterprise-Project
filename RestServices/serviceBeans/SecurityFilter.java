@@ -82,11 +82,6 @@ public class SecurityFilter implements ContainerRequestFilter {
 		return credentials;
 	}
 	
-	public static String hashPassword(String password_plaintext) {
-	    String salt = BCrypt.gensalt();
-	    String hashed_password = BCrypt.hashpw(password_plaintext, salt);
 
-	    return(hashed_password);
-	}
 	
 }

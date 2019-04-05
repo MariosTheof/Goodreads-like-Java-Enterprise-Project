@@ -16,6 +16,12 @@ public class UserBook {
 	@JoinColumn(name="book_id")
 	private Book book;
 	
+	// 1. μάλλον πρέπει να αλλάξεις το JoinColumn για foreign key
+	
+	// 2, μήπως πετάει έρορ ότι δεν υπάρχουν tables, επειδή είναι άδεια ;
+	
+	
+	
 	@Id
 	@ManyToOne
 	@JoinColumn(name="user_id")

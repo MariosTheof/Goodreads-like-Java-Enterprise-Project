@@ -9,6 +9,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
+import DataTransferObjects.UserDTO;
 import entity.User;
 
 
@@ -36,7 +37,6 @@ public class ServicesManager {
 		return newUser;
 	}
 	
-	
 	public String generateJwt() {
 		try {
 			Algorithm algorithm = Algorithm.HMAC256("secret");
@@ -51,4 +51,5 @@ public class ServicesManager {
 		}
 	}
 
+	
 }
