@@ -9,10 +9,11 @@ An Java EE enterprise application using JPA/EJB/Restful Services/MySql database.
 	- User registration with email (use BCrypt to hash password in DB)
 	- User Login (security with Basic Auth) and return a JWT Token
 	- EDIT/DELETE User
+	- GET user reviews (of a single user)
+
 	
 ## What will be done in the future : 
-  Rest Services :
-	- GET user reviews (of a single user)
+- Rest Services :
 	- GET/ADD/EDIT/DELETE Books (any authorized user can do that)
 	- GET Book Reviews (of a single book)
 	- ADD/EDIT/DELETE a Review from an authorized User to a Book
