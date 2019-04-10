@@ -1,5 +1,5 @@
 # Goodreads-like-Java-Enterprise-Project
-An Java EE enterprise application using JPA/EJB/Restful Services/MySql database. Developed in eclipse and wildfly 10.
+An Java EE enterprise application using JPA/EJB/Restful Services/MySql database. Developed in eclipse and wildfly 10.1.
 
 ## What has been done : 
 - Created the following Scenario in a DB Schema
